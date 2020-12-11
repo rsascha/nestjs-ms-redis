@@ -1,0 +1,11 @@
+namespace: dev
+
+resources:
+    - namespace.yaml
+    - ingress.yaml
+
+bases:
+    - ../../base
+
+patchesStrategicMerge:
+    - deployment.yaml
