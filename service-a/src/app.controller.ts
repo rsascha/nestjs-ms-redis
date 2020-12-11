@@ -8,7 +8,7 @@ export class AppController {
     constructor(private readonly appService: AppService) {}
 
     @Get()
-    updateConfig(): Observable<boolean> {
-        return this.appService.sendNewConfig();
+    generateNewConfig(): Observable<boolean> {
+        return this.appService.generateNewConfig();
     }
 }

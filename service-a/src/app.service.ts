@@ -20,7 +20,7 @@ export class AppService {
         return names[pos];
     }
 
-    sendNewConfig(): Observable<boolean> {
+    generateNewConfig(): Observable<boolean> {
         const data = `${this.getTitle()} ${this.getTitleAddon()}`;
         this.logger.log(`Start config update with: ${data}`);
         const result = this.configService.send<boolean>(

@@ -7,8 +7,8 @@ export class AppController {
     constructor(private readonly appService: AppService) {}
 
     @Get()
-    getHello(): string {
-        return this.appService.getHello();
+    getConfig(): string {
+        return `Config Data: ${this.appService.getConfig()}`;
     }
 
     @MessagePattern({ command: 'update-config' })
