@@ -7,3 +7,8 @@ apply:
 
 deploy: kustomize \
         apply
+
+delete-all:
+	kubectl delete -f k8s/generated/dev.yaml
+
+create: deploy
