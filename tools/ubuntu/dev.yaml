@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: ubuntu
+  name: ubuntu
+  namespace: dev
+spec:
+  containers:
+  - command:
+    - sleep
+    - "604800"
+    image: localhost:5000/ubuntu:1605558180
+    imagePullPolicy: IfNotPresent
+    name: ubuntu
+  restartPolicy: Always
