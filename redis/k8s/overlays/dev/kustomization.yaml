@@ -1,7 +1,4 @@
 namespace: dev
 
-resources:
-    - namespace.yaml
-
 bases:
     - ../../base

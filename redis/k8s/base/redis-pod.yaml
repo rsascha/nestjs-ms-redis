@@ -29,5 +29,5 @@ spec:
           configMap:
               name: redis-config
               items:
-                  - key: redis-config
+                  - key: redis.conf
                     path: redis.conf

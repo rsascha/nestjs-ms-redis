@@ -1,8 +1,4 @@
-configMapGenerator:
-    - name: redis-config
-      files:
-          - redis-config
-
 resources:
+    - configmap.yaml
     - redis-pod.yaml
     - service.yaml
