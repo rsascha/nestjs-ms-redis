@@ -3,7 +3,8 @@ kind: ConfigMap
 metadata:
     name: redis-config
 data:
-    redis.conf: |
+    redis-config: |
         maxmemory 2mb
         maxmemory-policy allkeys-lru
+        bind 0.0.0.0
         loglevel debug
