@@ -17,7 +17,7 @@ spec:
             containers:
                 - name: service-b
                   ports:
-                      - containerPort: 80
+                      - containerPort: 81
                   env:
                       - name: PORT
                         value: '3000'

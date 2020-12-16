@@ -3,9 +3,10 @@ kind: Service
 metadata:
     name: service-b
 spec:
+    type: LoadBalancer
     selector:
         app: service-b
     ports:
         - protocol: TCP
-          port: 80
+          port: 81
           targetPort: 3000
