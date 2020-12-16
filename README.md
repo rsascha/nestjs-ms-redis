@@ -1,14 +1,15 @@
 # nestjs-ms-redis
 
-Testing Microservices -> Redis implementation of NestJS ... Testing Microservices -> Redis implementation of NestJS ...
+Testing Microservices -> Redis implementation of NestJS ...
 
-## Redis Setup
-
-```sh
-docker run -d -p 6379:6379 redis
-```
+![In Action](in-action.png)
 
 ## Local Development
+
+```sh
+# Start redis
+docker run -d -p 6379:6379 redis
+```
 
 ```sh
 # Update config data every 5 seconds
