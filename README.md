@@ -2,7 +2,7 @@
 
 Testing Microservices -> Redis implementation of NestJS ...
 
-![In Action](in-action.png)
+![In Action](in-action.png?1)
 
 ## Local Development
 
