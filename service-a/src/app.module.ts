@@ -8,7 +8,7 @@ import config from 'src/config';
     imports: [
         ClientsModule.register([
             {
-                name: 'CONFIG_SERVICE',
+                name: 'MessagingClient',
                 transport: Transport.REDIS,
                 options: {
                     url: `redis://${config().database.host}:${

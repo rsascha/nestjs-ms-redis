@@ -11,7 +11,7 @@ export class AppController {
         return `Config Data: ${this.appService.getConfig()}`;
     }
 
-    @MessagePattern({ command: 'update-config' })
+    @MessagePattern({ command: 'update-config-service-b' })
     updateConfig(data: string): boolean {
         return this.appService.updateConfig(data);
     }

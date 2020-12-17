@@ -11,4 +11,9 @@ export class AppController {
     generateNewConfig(): Observable<boolean> {
         return this.appService.generateNewConfig();
     }
+
+    @MessagePattern({ command: 'update-config-service-a' })
+    updateConfig(data: string): boolean {
+        return this.appService.updateConfig(data);
+    }
 }
