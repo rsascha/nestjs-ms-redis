@@ -16,15 +16,18 @@ async function bootstrap() {
         });
     });
 
-    // const ms = await NestFactory.createMicroservice<MicroserviceOptions>(
-    //     AppModule,
-    //     {
-    //         transport: Transport.REDIS,
-    //         options: {
-    //             url: 'redis://localhost:6379',
-    //         },
-    //     },
-    // );
-    // await ms.listen(() => console.log('Microservice is listening'));
+    const redisUrl = `redis://${cfg.database.host}:${cfg.database.port}`;
+    logger.log(`Redis URL: ${redisUrl}`);
+    const ms = await NestFactory.createMicroservice<MicroserviceOptions>(
+        AppModule,
+        {
+            transport: Transport.REDIS,
+            logger: logger,
+            options: {
+                url: redisUrl,
+            },
+        },
+    );
+    await ms.listen(() => logger.log('Microservice is listening'));
 }
 bootstrap();

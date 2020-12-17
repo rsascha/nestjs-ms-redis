@@ -1,12 +1,14 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { Observable } from 'rxjs';
+import { merge, Observable } from 'rxjs';
+
+let config = '';
 
 @Injectable()
 export class AppService {
-    private logger = new Logger('AppService');
+    private logger = new Logger('AppService - Service A');
 
-    constructor(@Inject('CONFIG_SERVICE') private configService: ClientProxy) {}
+    constructor(@Inject('MessagingClient') private msgClient: ClientProxy) {}
 
     private getTitle(): string {
         const names = ['Mad Max', 'Cliff Hanger', 'Rambo', 'Terminator'];
@@ -21,12 +23,26 @@ export class AppService {
     }
 
     generateNewConfig(): Observable<boolean> {
-        const data = `${this.getTitle()} ${this.getTitleAddon()}`;
-        this.logger.log(`Start config update with: ${data}`);
-        const result = this.configService.send<boolean>(
-            { command: 'update-config' },
-            data,
+        config = `${this.getTitle()} ${this.getTitleAddon()}`;
+        this.logger.log(`Start config update with: ${config}`);
+        const resultA = this.msgClient.send<boolean>(
+            { command: 'update-config-service-a' },
+            config,
         );
-        return result;
+        const resultB = this.msgClient.send<boolean>(
+            { command: 'update-config-service-b' },
+            config,
+        );
+        return merge(resultA, resultB);
+    }
+
+    updateConfig(data: string): boolean {
+        if (data != config) {
+            this.logger.log(`Update config from: ${config} to: ${data}`);
+            config = data;
+            return true;
+        }
+        this.logger.log(`Config is up-to-date: ${config}`);
+        return false;
     }
 }

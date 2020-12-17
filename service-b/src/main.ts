@@ -28,6 +28,6 @@ async function bootstrap() {
             },
         },
     );
-    await ms.listen(() => console.log('Microservice is listening'));
+    await ms.listen(() => logger.log('Microservice is listening'));
 }
 bootstrap();
